@@ -11,9 +11,9 @@ class Solution {
     for (int i = 0; i < deliciousness.length; i++) {
         int val = deliciousness[i];
         for (int sum = 1; sum <= maxVal * 2; sum <<= 1) {
-            int complement = sum - val;
-            if (complement >= 0 && complement < maxSize) {
-                count += freq[complement];
+            int a = sum - val;
+            if (a >= 0 && a < maxSize) {
+                count += freq[a];
             }
         }
         freq[val]++;
