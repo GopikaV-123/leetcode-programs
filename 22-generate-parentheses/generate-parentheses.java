@@ -1,21 +1,17 @@
 class Solution {
-    public List<String> generateParenthesis(int n) {
-     List<String> res = new ArrayList<>();
-        backtrack(res, "", 0, 0, n);
+     List<String>res = new ArrayList<>();
+    public List<String> generateParenthesis(int n) { 
+        generate(0,0,n,"");
         return res;
     }
-    
-    private void backtrack(List<String> res, String current, int open, int close, int n) {
-        if (current.length() == 2 * n) {
-            res.add(current);
-            return;
+    public void generate(int ob, int cb, int n, String r){
+        if(r.length() == n * 2){
+            res.add(r);
+            return ;
         }
-        
-        if (open < n) 
-            backtrack(res, current + "(", open + 1, close, n);
-        
-        if (close < open) 
-            backtrack(res, current + ")", open, close + 1, n);
-            
+        if(ob < n)
+            generate(ob+1, cb, n, r+"(");
+        if(cb < ob)
+            generate(ob, cb+1, n, r+")");
     }
 }
