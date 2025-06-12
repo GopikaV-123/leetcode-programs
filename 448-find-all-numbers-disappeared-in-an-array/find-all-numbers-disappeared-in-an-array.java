@@ -1,19 +1,17 @@
 class Solution {
-    public List<Integer> findDisappearedNumbers(int[] a) {
-        List<Integer> list = new LinkedList<Integer>();
-        for(int i = 0; i < a.length; i++) {    
-            while(a[i] != i+1 && a[i] != a[a[i] -1]) {   
-                swap(a, i , a[i]-1);
+    public List<Integer> findDisappearedNumbers(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < nums.length; i++) {
+            int a = Math.abs(nums[i]) - 1;
+            if (nums[a] > 0) {
+                nums[a] = -nums[a];
             }
         }
-        for(int i = 0; i < a.length; i++) {    
-            if(a[i] != i+1) list.add(i+1);
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                result.add(i + 1);
+            }
         }
-        return list;   
+        return result;
     }
-    private void swap(int[] a, int i, int j) { 
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
-    }  
 }
